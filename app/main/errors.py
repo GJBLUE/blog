@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 16/9/18 下午3:48
 # @Author  : Jblue
 # @File    : errors.py
 
 from . import main
 from flask import render_template
+
+
+@main.app_errorhandler(403)
+def forbidden(e):
+    return render_template('403.html'), 403
 
 
 @main.app_errorhandler(404)
