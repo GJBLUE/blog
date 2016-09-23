@@ -51,6 +51,7 @@ def edit_post(id):
     post = Post.query.get_or_404(id)
     if g.current_user != post.author:
         return forbidden('No.')
+    post.title = request.json.get('title', post.title)
     post.body = request.json.get('body', post.body)
     db.session.add(post)
     return jsonify(post.to_json())
