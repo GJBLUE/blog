@@ -1,25 +1,23 @@
 {% extends "base.html" %}
 {#{% import "_macros.html" as macros %}#}
 
-#{% block title %}Jblue - Post{% endblock %}
+{% block title %}Jblue - Post{% endblock %}
 
 {% block page_content %}
 <div class="container">
-    <div class="post-content">
-        <div class="row body"></div>
-        <h1>{{ post.title }}</h1>
-            <div class="post-body">
-                {% if post.body_html %}
-                    {{ post.body_html | safe }}
-                {% else %}
-                    {{ post.body }}
-                {% endif %}
-            </div>
-        </div>
-</div>
-{% endblock %}
+    <div class="blog-header">
+        <h2 class="blof-post-title">
+            {{ post.title }}
+        </h2>
 
-{% block scripts %}
-{{ super() }}
-{{ pagedown.include_pagedown() }}
+    </div>
+    <div class="post-content">
+       <div class="post-body">
+           {% if post.body_html %}
+               {{ post.body_html | safe }}
+           {% else %}
+               {{ post.body }}
+           {% endif %}
+       </div>
+</div>
 {% endblock %}

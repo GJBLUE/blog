@@ -1,107 +1,163 @@
-.profile-thumbnail {
-    position: absolute;
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #555;
+  background: #F2EEE1;
 }
-.profile-header {
-    min-height: 260px;
-    margin-left: 280px;
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
 }
-div.post-tabs {
-    margin-top: 16px;
+
+
+/*
+ * Override Bootstrap's default container.
+ */
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
 }
-ul.posts {
-    list-style-type: none;
-    padding: 0px;
-    margin: 16px 0px 0px 0px;
-    border-top: 1px solid #e0e0e0;
+
+
+/*
+ * Masthead for nav
+ */
+
+.blog-masthead {
+  background-color: #428bca;
+  -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+          box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
 }
-div.post-tabs ul.posts {
-    margin: 0px;
-    border-top: none;
+
+/* Nav links */
+.blog-nav-item {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  font-weight: 500;
+  color: #cdddeb;
 }
-ul.posts li.post {
-    padding: 8px;
-    border-bottom: 1px solid #e0e0e0;
+.blog-nav-item:hover,
+.blog-nav-item:focus {
+  color: #fff;
+  text-decoration: none;
 }
-ul.posts li.post:hover {
-    background-color: #f0f0f0;
+
+/* Active state gets a caret at the bottom */
+.blog-nav .active {
+  color: #fff;
 }
-div.post-date {
-    float: right;
+.blog-nav .active:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  vertical-align: middle;
+  content: " ";
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid;
+  border-left: 5px solid transparent;
 }
-div.post-author {
-    font-weight: bold;
+
+
+/*
+ * Blog name and description
+ */
+
+.blog-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
-div.post-thumbnail {
-    position: absolute;
+.blog-title {
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-size: 60px;
+  font-weight: normal;
 }
-div.post-content {
-    margin-left: 48px;
-    min-height: 48px;
+.blog-description {
+  font-size: 20px;
+  color: #999;
 }
-div.post-footer {
-    text-align: right;
+
+
+/*
+ * Main column and sidebar layout
+ */
+
+.blog-main {
+  font-size: 18px;
+  line-height: 1.5;
 }
-ul.comments {
-    list-style-type: none;
-    padding: 0px;
-    margin: 16px 0px 0px 0px;
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+  padding: 15px;
+  margin: 0 -15px 15px;
 }
-ul.comments li.comment {
-    margin-left: 32px;
-    padding: 8px;
-    border-bottom: 1px solid #e0e0e0;
+.sidebar-module-inset {
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
 }
-ul.comments li.comment:nth-child(1) {
-    border-top: 1px solid #e0e0e0;
+.sidebar-module-inset p:last-child,
+.sidebar-module-inset ul:last-child,
+.sidebar-module-inset ol:last-child {
+  margin-bottom: 0;
 }
-ul.comments li.comment:hover {
-    background-color: #f0f0f0;
+
+
+/* Pagination */
+.pager {
+  margin-bottom: 60px;
+  text-align: left;
 }
-div.comment-date {
-    float: right;
+.pager > li > a {
+  width: 140px;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 30px;
 }
-div.comment-author {
-    font-weight: bold;
+
+
+/*
+ * Blog posts
+ */
+
+.blog-post {
+  margin-bottom: 60px;
 }
-div.comment-thumbnail {
-    position: absolute;
+.blog-post-title {
+  margin-bottom: 5px;
+  font-size: 40px;
 }
-div.comment-content {
-    margin-left: 48px;
-    min-height: 48px;
+.blog-post-meta {
+  margin-bottom: 20px;
+  color: #999;
 }
-div.comment-form {
-    margin: 16px 0px 16px 32px;
+
+
+/*
+ * Footer
+ */
+
+.blog-footer {
+  padding: 40px 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
 }
-div.pagination {
-    width: 100%;
-    text-align: right;
-    padding: 0px;
-    margin: 0px;
-}
-div.flask-pagedown-preview {
-    margin: 10px 0px 10px 0px;
-    border: 1px solid #e0e0e0;
-    padding: 4px;
-}
-div.flask-pagedown-preview h1 {
-    font-size: 140%;
-}
-div.flask-pagedown-preview h2 {
-    font-size: 130%;
-}
-div.flask-pagedown-preview h3 {
-    font-size: 120%;
-}
-.post-body h1 {
-    font-size: 140%;
-}
-.post-body h2 {
-    font-size: 130%;
-}
-.post-body h3 {
-    font-size: 120%;
-}
-.table.followers tr {
-    border-bottom: 1px solid #e0e0e0;
+.blog-footer p:last-child {
+  margin-bottom: 0;
 }
