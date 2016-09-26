@@ -94,7 +94,9 @@ def load_user(user_id):
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.Text)
+    title = db.Column(db.String(64), unique=True)
+    classify = db.Column(db.String(64))
+    tag = db.Column(db.String(64))
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
@@ -113,6 +115,8 @@ class Post(db.Model):
         json_post = {
             'url': url_for('api_1.get_post', id=self.id, _external=True),
             'title': self.title,
+            'classify': self.classify,
+            'tag': self.tag,
             'body': self.body,
             'body_html': self.body_html,
             'timestamp': self.timestamp,
@@ -123,9 +127,11 @@ class Post(db.Model):
     @staticmethod
     def from_json(json_post):
         title = json_post.get('title')
+        classify = json_post.get('classify')
+        tag = json_post.get('tag')
         body = json_post.get('body')
         if body is None or body == '':
             raise ValidationError('post does not have a body')
-        return Post(title=title, body=body)
+        return Post(title=title, classify=classify, tag=tag, body=body)
 
 db.event.listen(Post.body, 'set', Post.on_changed_body)

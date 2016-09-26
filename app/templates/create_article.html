@@ -4,10 +4,39 @@
 {% block title %}Jblue - Create Article{% endblock %}
 
 {% block page_content %}
-<div>
-    {% if current_user.is_authenticated %}
-    {{ wtf.quick_form(form) }}
-    {% endif %}
+<div class="container">
+    <div class=".col-xs-8 .col-sm-4 blog-main">
+        {% if current_user.is_authenticated %}
+        <form class="form-horizontal" role="form" method="POST" action="">
+            <div class="form-group">
+                <label for="title" >Title</label>
+                {{ form.title(class="form-control") }}
+            </div>
+            <div class="form-group">
+                <label for="classify" class="col-md-1 control-label">Classify</label>
+                <div class="col-sm-4">
+                    {{ form.classify(class="col-sm-1 form-control") }}
+                </div>
+                <label for="Taq" class="col-sm-3 control-label">Tag</label>
+                <div class="col-sm-4">
+                    {{ form.tag(class="col-sm-1 form-control") }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="body" >Demo</label>
+                {{ form.body(only_preview=True) }}
+            </div>
+            <div class="form-group">
+                <label for="body" >Body</label>
+                {{ form.body(only_input=True, class="col-sm-1 form-control", rows="15%") }}
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-default" name="submit" value="Submit"/>
+            </div>
+        </form>
+        {{ form.csrf_token }}
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
 

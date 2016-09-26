@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 16/9/18 下午3:11
 # @Author  : Jblue
-# @File    : __init__.py
+# @File    : __init__
 
 from flask import Flask
 from flask_bootstrap import Bootstrap

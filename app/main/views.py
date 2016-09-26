@@ -13,12 +13,14 @@ from ..models import Post
 
 
 @main.route('/create', methods=['GET', 'POST'])
-def create_article():
+def create():
     form = PostForm()
-    if form.validate_on_submit():
-        post = Post(title=form.title.data,
-                    body=form.body.data,
-                    author=current_user._get_current_object())
+    if request.method == "POST":
+        print 111111
+        post = Post(
+            title=form.title.data,
+            body=form.body.data,
+            author=current_user._get_current_object())
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('.index'))

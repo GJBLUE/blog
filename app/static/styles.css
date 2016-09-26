@@ -16,6 +16,9 @@ h6, .h6 {
   color: #333;
 }
 
+hr, .hr {
+  color: #d94f65;
+}
 
 /*
  * Override Bootstrap's default container.
