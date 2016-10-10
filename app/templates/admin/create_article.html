@@ -1,25 +1,20 @@
-{% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
+{% extends 'admin/admin_base.html' %}
 
 {% block title %}Jblue - Create Article{% endblock %}
 
-{% block page_content %}
-<div class="container">
-    <div class=".col-xs-8 .col-sm-4 blog-main">
+
+{% block admin_content %}
+<div class="entry-box manage-articles">
         {% if current_user.is_authenticated %}
-        <form class="form-horizontal" role="form" method="POST" action="">
+        <form class="submit-article" role="form" method="POST" action="">
             <div class="form-group">
                 <label for="title" >Title</label>
                 {{ form.title(class="form-control") }}
             </div>
             <div class="form-group">
-                <label for="classify" class="col-md-1 control-label">Classify</label>
+                <label for="Tag" class="col-sm-3 control-label">Tag</label>
                 <div class="col-sm-4">
-                    {{ form.classify(class="col-sm-1 form-control") }}
-                </div>
-                <label for="Taq" class="col-sm-3 control-label">Tag</label>
-                <div class="col-sm-4">
-                    {{ form.tag(class="col-sm-1 form-control") }}
+                    {{ form.tag_id(class="col-sm-1 form-control") }}
                 </div>
             </div>
             <div class="form-group">
@@ -28,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label for="body" >Body</label>
-                {{ form.body(only_input=True, class="col-sm-1 form-control", rows="15%") }}
+                {{ form.body(class="submit-article-summary form-control", rows="15%", required='')}}
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-default" name="submit" value="Submit"/>
@@ -36,7 +31,7 @@
         </form>
         {{ form.csrf_token }}
         {% endif %}
-    </div>
+
 </div>
 {% endblock %}
 

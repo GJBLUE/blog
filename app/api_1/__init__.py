@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Author  : Jblue
-# @File    : __init__
+# @File    : __init__.py
 
 from flask import Blueprint
 
