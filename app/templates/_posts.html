@@ -1,28 +1,49 @@
+{% import "_macros.html" as macros %}
+
 <div class="container">
-<div class="blog-header">
-<h1 class="title">
-    Article
-</h1>
-</div>
-<hr />
-<div class="rows">
-<div class="col-sm-8 blog-main">
-    {% for post in posts %}
-    <div class="blog-post">
-        <a class="body" href="{{ url_for('.article_details', id=post.id) }}">
-            <h3 class="title">{{ post.title }}</h3>
-        </a>
-        <p class="blog-post-meta">{{ post.timestamp }}
-            by {{ current_user.name }}
-        </p>
+    <div class="blog-header">
+        <h1 class="title">
+            Article
+        </h1>
     </div>
-    {% endfor %}
-</div>
-<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-        <div class="sidebar-module sidebar-module sidebar-module-inset">
-            <h4>About</h4>
-            <p>The blog base on Flask</p>
+    <hr/>
+    <div class="rows">
+        <div class="col-sm-8 blog-main">
+            {% for post in posts %}
+                <div class="blog-post">
+                    <a class="body" href="{{ url_for('admin.article_details', id=post.id) }}">
+                        <h3 class="title">{{ post.title }}</h3>
+                    </a>
+                    <p class="blog-post-meta">{{ moment(post.timestamp).format('LL') }}
+                    </p>
+                </div>
+            {% endfor %}
+            {% if pagination %}
+                <div class="pagination">
+                    {{ macros.pagination_widget(pagination, '.index') }}
+                </div>
+            {% endif %}
         </div>
-</div>
-</div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module sidebar-module-inset">
+                <h4>About</h4>
+                <p>The blog base on Flask</p>
+            </div>
+            <div class="sidebar-module ">
+                <h4>More</h4>
+                <ol class="list-unstyled row" >
+                    <li class="col-md-6">
+                        <a href="https://github.com/GJBLUE" target="_blank" >
+                            <img src="{{ url_for('static', filename="files/icon/GitHub.png") }}" style="width: 30px;height: 30px "></img>
+                        </a>
+                    </li>
+                    <li class="col-md-2">
+                        <a href="https://github.com/GJBLUE" target="_blank" >
+                            <img src="{{ url_for('static', filename="files/icon/zhihu.png") }}" style="width: 30px;height: 30px "></img>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </div>

@@ -17,7 +17,7 @@ from flask import render_template, redirect, flash, \
 @admin.route('/article_details/<int:id>', methods=['GET', 'POST'])
 def article_details(id):
     post = Post.query.get_or_404(id)
-    return render_template('post.html', post=post)
+    return render_template('admin/article_details.html', post=post)
 
 
 @admin.route('/create_article', methods=['GET', 'POST'])
@@ -75,23 +75,26 @@ def delete_articles():
     return redirect(url_for('admin.manage_articles', page=request.args.get('page', 1, type=int)))
 
 
-@admin.route('/manage-articles/edit_articles/<int:id>')
+@admin.route('/manage-articles/edit_articles/<int:id>', methods=['GET', 'POST'])
 def edit_articles(id):
+    print 222222222
     post = Post.query.get_or_404(id)
     if current_user != post.author:
         abort(403)
     form = PostForm()
     if form.validate_on_submit():
+        print 1111111111111
         post.title = form.title.data
         post.body = form.body.data
         post.tag_id = form.tag_id.data
         db.session.add(post)
+        db.session.commit()
         flash('Articles Published')
-        return redirect(url_for('.post', id=post.id))
+        return redirect(url_for('admin.article_details', id=post.id))
     form.title.data = post.title
     form.body.data = post.body
     form.tag_id.data = post.tag_id
-    return render_template('edit_post.html', form=form)
+    return render_template('admin/edit_article.html', form=form)
 
 
 @admin.route('manage_articles', methods=['GET', 'POST'])

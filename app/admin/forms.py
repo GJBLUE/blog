@@ -20,7 +20,6 @@ class DeleteArticlesForm(Form):
 
 class PostForm(Form):
     title = StringField('Title', validators=[Length(1, 64)])
-    classify_id = StringField('Classify_id', validators=[Length(1, 64)])
     tag_id = StringField('Tag_id', validators=[Length(1, 64)])
     body = PageDownField("write some things!", validators=[Required()])
     submit = SubmitField('submit')
