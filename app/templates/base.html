@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block navbar %}
-<div class="navbar navbar-inverse" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,7 +21,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('main.index') }}">文章</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
@@ -49,7 +49,14 @@
 {% endfor %}
 
 {% block page_content %}{% endblock %}
-
+{{ super() }}
+{% block footer %}
+<footer>
+    <section class="copyright">
+        <label>基于Flask</label>
+    </section>
+</footer>
+{% endblock footer%}
 {% endblock %}
 
 
