@@ -49,6 +49,7 @@
 {% endfor %}
 
 {% block page_content %}{% endblock %}
+    <a id="scrollUp" href="#top"><span class="glyphicon glyphicon-chevron-up"></span></a>
 {{ super() }}
 {% block footer %}
 <footer>
@@ -64,4 +65,6 @@
 {{ super() }}
 {{ moment.include_moment() }}
 {{ moment.lang('zh-cn') }}
+<script src="http://apps.bdimg.com/libs/jquery-scrollUp/2.1.0/jquery.scrollUp.min.js"></script>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
 {% endblock %}

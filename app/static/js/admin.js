@@ -180,3 +180,11 @@ function changePassword() {
 function EditUserInfo() {
     $('#editUserInfoFormModal').modal();
 }
+
+// function show_edit() {
+//     $('#editArticleTypeFormModel').modal();
+// }
+
+function edit_show() {
+      $('#edit_tag').modal();
+}

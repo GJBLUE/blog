@@ -1,6 +1,7 @@
 body {
   padding-top: 70px;
   font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 14px;
   color: #555;
   background: #F2EEE1;
 }
@@ -28,13 +29,39 @@ a h3 {
 @media (min-width: 1200px) {
   .container {
     width: 970px;
+
   }
 }
 
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.entry-box {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+}
+
+.manage-articles .table-header {
+    background-color: #779ecb;
+}
 
 /*
  * Masthead for nav
  */
+
+div.pagination {
+    width: 100%;
+    text-align: left;
+    padding: 0px;
+    margin: 0px;
+}
 
 .blog-masthead {
   background-color: #428bca;
@@ -156,8 +183,19 @@ a h3 {
  */
 
 footer .copyright{
-  padding: 20px 0;
+  position: absolute;
+  width: 100%;
+
   text-align: center;
-  line-height: 71px;
-  background-color: white;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 50px;/*等於footer的高度*/
 }
+
+#scrollUp {
+  position: fixed;
+  display: block;
+  bottom:36px;
+  right:190px;
+  height:38px
+}
+

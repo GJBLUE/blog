@@ -2,3 +2,4 @@
 migrations/*
 config.py
 .idea
+api_1/*
