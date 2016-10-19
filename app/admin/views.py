@@ -139,6 +139,25 @@ def manage_tags():
                            endpoint='admin.manage_articles', pagination=pagination_search)
 
 
+@admin.route('/manage_article/create_tag', methods=['POST'])
+@login_required
+def create_tag():
+    form = TagForm()
+
+    if form.validate_on_submit():
+        name = form.tagname.data
+        flag = ArticleType.query.filter_by(name=name).first()
+        if flag:
+            flash(u'添加失败!分类已存在!', 'danger')
+        else:
+            article_type = ArticleType(name=name)
+            db.session.add(article_type)
+            db.session.commit()
+            flash(u'sucess!', 'sucess')
+
+    return redirect(url_for('admin.manage_tags'))
+
+
 @admin.route('/manage_tags/edit_tag/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_tag(id):
